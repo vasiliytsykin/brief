@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+{% block form %}
+<h5 class="report-h5">Бриф на разработку сайта</h5>
+<h1 class="h1 report-h1">{{ company }}</h1>
+
+<div class="col-md-5">
+
+    <div class="report-block">
+        <h6 class="report-h6">Контакты</h6>
+        <p class="report-p">{{ contact }}</p>
+    </div>
+
+    <div class="report-block">
+        <h6 class="report-h6">Сфера деятельности</h6>
+        <p class="report-p">{{ sphere }}</p>
+    </div>
+
+    <div class="report-block">
+        <h6 class="report-h6">География деятельности</h6>
+        <p class="report-p">{{ geography }}</p>
+    </div>
+
+    <div class="contact-info">
+        <p class="contact-p">По всем вопросам обращайтесь</br>
+            по адресу {{ email }}, </br>
+            или по телефону  {{ phone }}
+        </p>
+    </div>
+
+    <h3 class="report-h3">Постоянная ссылка</h3>
+
+    <div class="form-control brief-ref">
+        <span class="ref" id="link">{{ uri }}</span>
+    </div>
+
+    <div class="next-btn">
+        <button class="btn btn-default btn-copy" id="copy-button" data-clipboard-target="#link">
+            <span>копировать</span>
+        </button>
+    </div>
+
+</div>
+{% endblock %}
+
