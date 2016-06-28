@@ -32,4 +32,22 @@ class HomeController extends Controller
     {
         return $this->render("forms/{$formName}.html.twig");
     }
+
+    /**
+     * @Route("/home/create_report", name="create_report")
+     * @Method("POST")
+     */
+    public function createReportAction()
+    {
+        return new Response("ok");
+    }
+
+    /**
+     * @Route("/home/get_report/{id}", name="get_report")
+     * @Method("GET")
+     */
+    public function getReportAction($id)
+    {
+        
+    }
 }
