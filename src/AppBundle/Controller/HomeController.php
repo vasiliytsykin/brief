@@ -11,6 +11,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
@@ -28,7 +29,7 @@ class HomeController extends Controller
      * @Route("/home/get_form/{formName}", name="get_form")
      * @Method("POST")
      */
-    public function getFormAction($formName)
+    public function getFormAction($formName, Request $request)
     {
         return $this->render("forms/{$formName}.html.twig");
     }
