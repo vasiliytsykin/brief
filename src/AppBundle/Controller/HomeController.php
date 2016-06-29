@@ -8,20 +8,31 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Company;
+use AppBundle\Form\Type\CompanyType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
 {
     /**
-     * @Route("/")
-     * @Method("GET")
+     * @Route("/", name="home")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return $this->render("default/index.html.twig");
+        $company = new Company();
+
+        $companyForm = $this->createForm(CompanyType::class, $company);
+
+        $companyForm->handleRequest($request);
+
+        if($companyForm->isSubmitted())
+            return new Response(var_dump($company));
+        else
+            return $this->render(":forms:company.html.twig", array('form' => $companyForm->createView()));
     }
     
     /**
@@ -39,7 +50,7 @@ class HomeController extends Controller
      */
     public function createReportAction()
     {
-        return new Response("ok");
+        return $this->redirectToRoute("get_report", ['id' => 1], 301);
     }
 
     /**
@@ -48,6 +59,6 @@ class HomeController extends Controller
      */
     public function getReportAction($id)
     {
-        
+        return new Response("report {$id}");
     }
 }
