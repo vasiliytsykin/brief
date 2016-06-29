@@ -1,15 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vasyasavincov
- * Date: 26.06.16
- * Time: 21:37
- */
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Company;
-use AppBundle\Form\Type\CompanyType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,25 +15,34 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $company = new Company();
-
-        $companyForm = $this->createForm(CompanyType::class, $company);
-
-        $companyForm->handleRequest($request);
-
-        if($companyForm->isSubmitted())
-            return new Response(var_dump($company));
-        else
-            return $this->render(":forms:company.html.twig", array('form' => $companyForm->createView()));
+        return $this->redirectToRoute('get_form', ['formName' => 'Company']);
     }
     
     /**
      * @Route("/home/get_form/{formName}", name="get_form")
-     * @Method("POST")
      */
     public function getFormAction($formName, Request $request)
     {
-        return $this->render("forms/{$formName}.html.twig");
+        $className = "AppBundle\\Entity\\{$formName}";
+        $formType = "AppBundle\\Form\\Type\\{$formName}Type";
+
+        $dataClass = new $className;
+
+        $form = $this->createForm($formType, $dataClass);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($dataClass);
+            $em->flush();
+            return $this->redirect($dataClass->action);
+        }
+        else
+            return $this->render(":form:{$formName}.html.twig", array(
+                'dataClass' => $dataClass,
+                'form' => $form->createView()));
     }
 
     /**

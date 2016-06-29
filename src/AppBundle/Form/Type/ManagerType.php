@@ -2,15 +2,14 @@
 
 namespace AppBundle\Form\Type;
 
-
-use AppBundle\Entity\Company;
+use AppBundle\Entity\Manager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CompanyType extends AbstractType
+class ManagerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,25 +17,13 @@ class CompanyType extends AbstractType
             ->add('name', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
-                    'placeholder' => 'Ваша компания'
+                    'placeholder' => 'ФИО'
                 )
             ))
-            ->add('domain', TextType::class, array(
+            ->add('phone', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
-                    'placeholder' => 'Сфера деятельности'
-                )
-            ))
-            ->add('geography', TextType::class, array(
-                'attr' => array(
-                    'class' => 'form-control',
-                    'placeholder' => 'География деятельности'
-                )
-            ))
-            ->add('products', TextType::class, array(
-                'attr' => array(
-                    'class' => 'form-control',
-                    'placeholder' => 'Основные характеристики товаров и услуг'
+                    'placeholder' => 'Номер телефона'
                 )
             ))
             ->add('email', EmailType::class, array(
@@ -51,7 +38,7 @@ class CompanyType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_type' => Company::class)
+                'data_type' => Manager::class)
         );
     }
 }

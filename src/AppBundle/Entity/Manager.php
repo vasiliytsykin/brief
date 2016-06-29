@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vasyasavincov
- * Date: 28.06.16
- * Time: 16:22
- */
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  *@ORM\Entity
  */
-class Company
+class Manager
 {
     /**
      * @ORM\Column(type="integer")
@@ -27,27 +21,21 @@ class Company
     private $name;
 
     /**
-     * @ORM\Column(type="text")
-     */
-    private $domain;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $geography;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $products;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $email;
-    
-    private $action = "/home/get_form/Manager";
 
+    /**
+     * @ORM\Column(type="string", length=12)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $company;
+
+    private $action = "home/get_form/Marketing";
 
     public function __get($field)
     {
