@@ -34,8 +34,7 @@ class Manager
      * @ORM\Column(type="integer")
      */
     private $company;
-
-    private $action = "home/get_form/Marketing";
+    
 
     public function __get($field)
     {

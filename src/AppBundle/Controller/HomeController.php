@@ -10,6 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
 {
+
+    private $path = array(
+        'Company' => '/home/get_form/Manager',
+        'Manager' => '/home/get_form/Marketing'
+        );
+
     /**
      * @Route("/", name="home")
      */
@@ -32,18 +38,19 @@ class HomeController extends Controller
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted())
+        if($form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
             $em->persist($dataClass);
             $em->flush();
-            return $this->redirect($dataClass->action);
+            return $this->redirect($this->path[$formName]);
         }
         else
             return $this->render(":form:{$formName}.html.twig", array(
                 'dataClass' => $dataClass,
                 'form' => $form->createView()));
     }
+
 
     /**
      * @Route("/home/create_report", name="create_report")

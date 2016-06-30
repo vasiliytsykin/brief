@@ -45,8 +45,6 @@ class Company
      * @ORM\Column(type="string", length=100)
      */
     private $email;
-    
-    private $action = "/home/get_form/Manager";
 
 
     public function __get($field)
