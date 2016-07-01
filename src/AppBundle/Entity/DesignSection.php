@@ -48,13 +48,7 @@ class DesignSection
      * @ORM\Column(name="anti_associations", type="text")
      */
     private $antiAssociations;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="brief_id", type="integer", unique=true)
-     */
-    private $briefId;
+    
 
 
     /**
@@ -161,30 +155,6 @@ class DesignSection
     public function getAntiAssociations()
     {
         return $this->antiAssociations;
-    }
-
-    /**
-     * Set briefId
-     *
-     * @param integer $briefId
-     *
-     * @return DesignSection
-     */
-    public function setBriefId($briefId)
-    {
-        $this->briefId = $briefId;
-
-        return $this;
-    }
-
-    /**
-     * Get briefId
-     *
-     * @return int
-     */
-    public function getBriefId()
-    {
-        return $this->briefId;
     }
 }
 

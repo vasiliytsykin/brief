@@ -34,13 +34,7 @@ class MakeupSection
      * @ORM\Column(name="js_library", type="text")
      */
     private $jsLibrary;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="brief_id", type="integer", unique=true)
-     */
-    private $briefId;
+    
 
 
     /**
@@ -99,30 +93,6 @@ class MakeupSection
     public function getJsLibrary()
     {
         return $this->jsLibrary;
-    }
-
-    /**
-     * Set briefId
-     *
-     * @param integer $briefId
-     *
-     * @return MakeupSection
-     */
-    public function setBriefId($briefId)
-    {
-        $this->briefId = $briefId;
-
-        return $this;
-    }
-
-    /**
-     * Get briefId
-     *
-     * @return int
-     */
-    public function getBriefId()
-    {
-        return $this->briefId;
     }
 }
 

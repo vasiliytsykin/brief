@@ -1,15 +1,14 @@
 <?php
 
-namespace AppBundle\Form\Type;
+namespace AppBundle\Form;
 
-use AppBundle\Entity\Manager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ManagerType extends AbstractType
+class CompanyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -17,14 +16,27 @@ class ManagerType extends AbstractType
             ->add('name', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
-                    'placeholder' => 'ФИО'
+                    'placeholder' => 'Ваша компания'
                 )
             ))
-            ->add('phone', TextType::class, array(
+            ->add('domain', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
-                    'placeholder' => 'Номер телефона'
+                    'placeholder' => 'Сфера деятельности'
                 )
+            ))
+            ->add('geography', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                    'placeholder' => 'География деятельности'
+                )
+            ))
+            ->add('products', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                    'placeholder' => 'Основные характеристики товаров и услуг'
+                ),
+                'required' => false
             ))
             ->add('email', EmailType::class, array(
                 'attr' => array(
@@ -38,7 +50,7 @@ class ManagerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-                'data_type' => Manager::class)
+            'data_type' => 'AppBundle\Entity\Company')
         );
     }
 }

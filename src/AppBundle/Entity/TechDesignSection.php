@@ -56,13 +56,6 @@ class TechDesignSection
      */
     private $language;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="brief_id", type="integer", unique=true)
-     */
-    private $briefId;
-
 
     /**
      * Get id
@@ -192,30 +185,6 @@ class TechDesignSection
     public function getLanguage()
     {
         return $this->language;
-    }
-
-    /**
-     * Set briefId
-     *
-     * @param integer $briefId
-     *
-     * @return TechDesignSection
-     */
-    public function setBriefId($briefId)
-    {
-        $this->briefId = $briefId;
-
-        return $this;
-    }
-
-    /**
-     * Get briefId
-     *
-     * @return int
-     */
-    public function getBriefId()
-    {
-        return $this->briefId;
     }
 }
 

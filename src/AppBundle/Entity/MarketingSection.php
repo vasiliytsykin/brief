@@ -20,13 +20,7 @@ class MarketingSection
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="brief_id", type="integer", unique=true)
-     */
-    private $brief_id;
+    
 
     /**
      * @var string
@@ -130,22 +124,6 @@ class MarketingSection
     public function getCapacity()
     {
         return $this->capacity;
-    }
-
-    /**
-     * @return int
-     */
-    public function getBriefId()
-    {
-        return $this->brief_id;
-    }
-
-    /**
-     * @param int $brief_id
-     */
-    public function setBriefId($brief_id)
-    {
-        $this->brief_id = $brief_id;
     }
 }
 

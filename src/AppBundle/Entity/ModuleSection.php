@@ -22,13 +22,6 @@ class ModuleSection
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="brief_id", type="integer", unique=true)
-     */
-    private $briefId;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="site_modules", type="text")
@@ -45,30 +38,7 @@ class ModuleSection
     {
         return $this->id;
     }
-
-    /**
-     * Set briefId
-     *
-     * @param integer $briefId
-     *
-     * @return ModuleSection
-     */
-    public function setBriefId($briefId)
-    {
-        $this->briefId = $briefId;
-
-        return $this;
-    }
-
-    /**
-     * Get briefId
-     *
-     * @return int
-     */
-    public function getBriefId()
-    {
-        return $this->briefId;
-    }
+    
 
     /**
      * Set siteModules

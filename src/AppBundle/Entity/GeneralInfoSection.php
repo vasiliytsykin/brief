@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * SiteGeneralInfo
+ * GeneralInfoSection
  *
- * @ORM\Table(name="site_general_info")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\SiteGeneralInfoRepository")
+ * @ORM\Table(name="general_info_section")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GeneralInfoSectionRepository")
  */
-class SiteGeneralInfo
+class GeneralInfoSection
 {
     /**
      * @var int
@@ -20,13 +20,6 @@ class SiteGeneralInfo
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="brief_id", type="integer", unique=true)
-     */
-    private $briefId;
 
     /**
      * @var string
@@ -73,11 +66,9 @@ class SiteGeneralInfo
     /**
      * @var string
      *
-     * @ORM\Column(name="guidline", type="text")
+     * @ORM\Column(name="guideline", type="text")
      */
-    private $guidline;
-
-    
+    private $guideline;
 
 
     /**
@@ -95,7 +86,7 @@ class SiteGeneralInfo
      *
      * @param string $targetName
      *
-     * @return SiteGeneralInfo
+     * @return GeneralInfoSection
      */
     public function setTargetName($targetName)
     {
@@ -119,7 +110,7 @@ class SiteGeneralInfo
      *
      * @param string $targetGroup
      *
-     * @return SiteGeneralInfo
+     * @return GeneralInfoSection
      */
     public function setTargetGroup($targetGroup)
     {
@@ -143,7 +134,7 @@ class SiteGeneralInfo
      *
      * @param string $mainTask
      *
-     * @return SiteGeneralInfo
+     * @return GeneralInfoSection
      */
     public function setMainTask($mainTask)
     {
@@ -167,7 +158,7 @@ class SiteGeneralInfo
      *
      * @param string $message
      *
-     * @return SiteGeneralInfo
+     * @return GeneralInfoSection
      */
     public function setMessage($message)
     {
@@ -191,7 +182,7 @@ class SiteGeneralInfo
      *
      * @param string $keywords
      *
-     * @return SiteGeneralInfo
+     * @return GeneralInfoSection
      */
     public function setKeywords($keywords)
     {
@@ -215,7 +206,7 @@ class SiteGeneralInfo
      *
      * @param string $structure
      *
-     * @return SiteGeneralInfo
+     * @return GeneralInfoSection
      */
     public function setStructure($structure)
     {
@@ -235,51 +226,27 @@ class SiteGeneralInfo
     }
 
     /**
-     * Set guidline
+     * Set structure
      *
-     * @param string $guidline
+     * @param string $guideline
      *
-     * @return SiteGeneralInfo
+     * @return GeneralInfoSection
      */
-    public function setGuidline($guidline)
+    public function setGuideline($guideline)
     {
-        $this->guidline = $guidline;
+        $this->guideline = $guideline;
 
         return $this;
     }
 
     /**
-     * Get guidline
+     * Get guideline
      *
      * @return string
      */
-    public function getGuidline()
+    public function getGuideline()
     {
-        return $this->guidline;
-    }
-
-    /**
-     * Set briefId
-     *
-     * @param integer $briefId
-     *
-     * @return SiteGeneralInfo
-     */
-    public function setBriefId($briefId)
-    {
-        $this->briefId = $briefId;
-
-        return $this;
-    }
-
-    /**
-     * Get briefId
-     *
-     * @return int
-     */
-    public function getBriefId()
-    {
-        return $this->briefId;
+        return $this->guideline;
     }
 }
 

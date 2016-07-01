@@ -63,12 +63,6 @@ class CodeSection
      */
     private $cms;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="brief_id", type="integer", unique=true)
-     */
-    private $briefId;
 
 
     /**
@@ -223,30 +217,6 @@ class CodeSection
     public function getCms()
     {
         return $this->cms;
-    }
-
-    /**
-     * Set briefId
-     *
-     * @param integer $briefId
-     *
-     * @return CodeSection
-     */
-    public function setBriefId($briefId)
-    {
-        $this->briefId = $briefId;
-
-        return $this;
-    }
-
-    /**
-     * Get briefId
-     *
-     * @return int
-     */
-    public function getBriefId()
-    {
-        return $this->briefId;
     }
 }
 
