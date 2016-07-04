@@ -13,7 +13,7 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, array(
+            ->add('companyName', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Ваша компания'
@@ -38,7 +38,7 @@ class CompanyType extends AbstractType
                 ),
                 'required' => false
             ))
-            ->add('email', EmailType::class, array(
+            ->add('companyEmail', EmailType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Email'

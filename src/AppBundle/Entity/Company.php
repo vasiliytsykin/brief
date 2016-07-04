@@ -24,9 +24,9 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=100, unique=true)
+     * @ORM\Column(name="company_name", type="string", length=100, unique=true)
      */
-    private $name;
+    private $companyName;
 
     /**
      * @var string
@@ -52,9 +52,9 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=100, unique=true)
+     * @ORM\Column(name="company_email", type="string", length=100, unique=true)
      */
-    private $email;
+    private $companyEmail;
 
 
     /**
@@ -68,27 +68,27 @@ class Company
     }
 
     /**
-     * Set name
+     * Set comapnyName
      *
-     * @param string $name
+     * @param string $companyName
      *
      * @return Company
      */
-    public function setName($name)
+    public function setCompanyName($companyName)
     {
-        $this->name = $name;
+        $this->companyName = $companyName;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get companyName
      *
      * @return string
      */
-    public function getName()
+    public function getCompanyName()
     {
-        return $this->name;
+        return $this->companyName;
     }
 
     /**
@@ -166,13 +166,13 @@ class Company
     /**
      * Set email
      *
-     * @param string $email
+     * @param string $companyEmail
      *
      * @return Company
      */
-    public function setEmail($email)
+    public function setCompanyEmail($companyEmail)
     {
-        $this->email = $email;
+        $this->companyEmail = $companyEmail;
 
         return $this;
     }
@@ -182,9 +182,9 @@ class Company
      *
      * @return string
      */
-    public function getEmail()
+    public function getCompanyEmail()
     {
-        return $this->email;
+        return $this->companyEmail;
     }
 }
 

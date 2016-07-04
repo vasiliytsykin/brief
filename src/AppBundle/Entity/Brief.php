@@ -28,7 +28,7 @@ class Brief
      * @var int
      *
      * @ORM\Column(name="company_id", type="integer")
-     * @ManyToOne(targetEntity="Company")
+     * @ManyToOne(targetEntity="AppBundle\Entity\Company")
      * @JoinColumn(name="company_id", referencedColumnName="id")
      */
     private $companyId;
@@ -37,7 +37,7 @@ class Brief
      * @var int
      *
      * @ORM\Column(name="manager_id", type="integer")
-     * @ManyToOne(targetEntity="Manager")
+     * @ManyToOne(targetEntity="AppBundle\Entity\Manager")
      * @JoinColumn(name="manager_id", referencedColumnName="id")
      */
     private $managerId;

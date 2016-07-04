@@ -1,29 +1,29 @@
 {% extends "base.html.twig" %}
 {% block content %}
 <h5 class="report-h5">Бриф на разработку сайта</h5>
-<h1 class="h1 report-h1">{{ company }}</h1>
+<h1 class="h1 report-h1">{{ company.companyName }}</h1>
 
 <div class="col-md-5">
 
     <div class="report-block">
         <h6 class="report-h6">Контакты</h6>
-        <p class="report-p">{{ contact }}</p>
+        <p class="report-p">{{ manager.managerName }}, {{ manager.phone }}, {{ manager.managerEmail }}</p>
     </div>
 
     <div class="report-block">
         <h6 class="report-h6">Сфера деятельности</h6>
-        <p class="report-p">{{ sphere }}</p>
+        <p class="report-p">{{ company.domain }}</p>
     </div>
 
     <div class="report-block">
         <h6 class="report-h6">География деятельности</h6>
-        <p class="report-p">{{ geography }}</p>
+        <p class="report-p">{{ company.geography }}</p>
     </div>
 
     <div class="contact-info">
         <p class="contact-p">По всем вопросам обращайтесь</br>
-            по адресу {{ email }}, </br>
-            или по телефону  {{ phone }}
+            по адресу {{ company.companyEmail }}, </br>
+            или по телефону  {{ manager.phone }}
         </p>
     </div>
 

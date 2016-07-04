@@ -18,14 +18,14 @@ class Manager
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100, unique=true)
+     * @ORM\Column(name="manager_name", type="string", length=100, unique=true)
      */
-    private $name;
+    private $managerName;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(name="manager_email", type="string", length=100)
      */
-    private $email;
+    private $managerEmail;
 
     /**
      * @ORM\Column(type="string", length=12)
@@ -50,18 +50,18 @@ class Manager
     /**
      * @return string
      */
-    public function getName()
+    public function getManagerName()
     {
-        return $this->name;
+        return $this->managerName;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $managerName
      * @return Manager
      */
-    public function setName($name)
+    public function setManagerName($managerName)
     {
-        $this->name = $name;
+        $this->managerName = $managerName;
         
         return $this;
     }
@@ -69,18 +69,18 @@ class Manager
     /**
      * @return string
      */
-    public function getEmail()
+    public function getManagerEmail()
     {
-        return $this->email;
+        return $this->managerEmail;
     }
 
     /**
-     * @param mixed $email
+     * @param mixed $managerEmail
      * @return Manager
      */
-    public function setEmail($email)
+    public function setManagerEmail($managerEmail)
     {
-        $this->email = $email;
+        $this->managerEmail = $managerEmail;
         
         return $this;
     }

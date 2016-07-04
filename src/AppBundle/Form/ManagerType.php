@@ -13,7 +13,7 @@ class ManagerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, array(
+            ->add('managerName', TextType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'ФИО'
@@ -25,7 +25,7 @@ class ManagerType extends AbstractType
                     'placeholder' => 'Номер телефона'
                 )
             ))
-            ->add('email', EmailType::class, array(
+            ->add('managerEmail', EmailType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Email'

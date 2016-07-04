@@ -25,6 +25,13 @@
 
             </div> <!-- container -->
         {% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('javascript/jquery-2.2.4.min.js') }}"></script>
+            <script src="{{ asset('javascript/jquery.validate.min.js') }}"></script>
+            <script src="{{ asset('javascript/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('javascript/clipboard.min.js') }}"></script>
+            <script src="{{ asset('javascript/site.js') }}"></script>
+            <script src="{{ asset('javascript/validation.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

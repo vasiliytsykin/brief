@@ -19,70 +19,70 @@ class ModuleSectionType extends AbstractType
         $builder
             ->add('news', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Новости'
                 ),
                 'label' => 'Новости',
                 'required' => false
                 ))
             ->add('spam', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Почтовая рассылка'
                 ),
                 'label' => 'Почтовая рассылка',
                 'required' => false
             ))
             ->add('catalog', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Каталог'
                 ),
                 'label' => 'Каталог',
                 'required' => false
             ))
             ->add('store', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Интернет-магазин'
                 ),
                 'label' => 'Интернет-магазин (службы доставки, системы оплаты, интеграция с агрегаторами)',
                 'required' => false
             ))
             ->add('search', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Поиск'
                 ),
                 'label' => 'Поиск',
                 'required' => false
             ))
             ->add('faq', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Вопрос-ответ'
                 ),
                 'label' => 'Вопрос-ответ',
                 'required' => false
             ))
             ->add('registration', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Регистрация посетителей'
                 ),
                 'label' => 'Регистрация посетителей',
                 'required' => false
             ))
             ->add('photo-gallery', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Фотогалерея'
                 ),
                 'label' => 'Фотогалерея',
                 'required' => false
             ))
             ->add('video-gallery', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Видео-галерея'
                 ),
                 'label' => 'Видео-галерея',
                 'required' => false
             ))
             ->add('vacancy', CheckboxType::class, array(
                 'attr' => array(
-                    'value' => ''
+                    'value' => 'Вакансии'
                 ),
                 'label' => 'Вакансии',
                 'required' => false
