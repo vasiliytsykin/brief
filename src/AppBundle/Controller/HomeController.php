@@ -3,14 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Brief;
-use AppBundle\Entity\Company;
-use AppBundle\Entity\Manager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+
 
 class HomeController extends Controller
 {
@@ -44,8 +42,8 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $formIdArray = array();
-        $request->getSession()->set('formIdArray', $formIdArray);
+        $formArray = array();
+        $request->getSession()->set('formArray', $formArray);
         return $this->redirectToRoute('get_form', ['formName' => 'Company']);
     }
     
@@ -67,7 +65,7 @@ class HomeController extends Controller
 
         if($form->isValid())
         {
-            $formIdArray = $request->getSession()->get('formIdArray');
+            $formArray = $request->getSession()->get('formArray');
 
             if($formName == 'ModuleSection')
                 $dataClass = $dataClass->
@@ -75,12 +73,10 @@ class HomeController extends Controller
                 getModules($request->request->get($form->getName())));
 
             if($formName == 'Manager')
-                $dataClass = $dataClass->setCompanyId($formIdArray['Company']);
+                $dataClass = $dataClass->setCompany($formArray['Company']);
 
-
-            $formIdArray[$formName] = $this->saveToDB($dataClass);
-            $request->getSession()->set('formIdArray', $formIdArray);
-
+            $formArray[$formName] = $dataClass;
+            $request->getSession()->set('formArray', $formArray);
 
             return $this->redirect($this->path[$formName]);
         }
@@ -88,14 +84,6 @@ class HomeController extends Controller
             return $this->renderForm($dataClass, $form, $formName);
     }
 
-
-    private function saveToDB($dataClass)
-    {
-        $em = $this->getDoctrine()->getManager();
-            $em->persist($dataClass);
-            $em->flush();
-        return $dataClass->getId();
-    }
 
     private function renderForm($dataClass, Form $form, $formName)
     {
@@ -130,17 +118,21 @@ class HomeController extends Controller
     public function createReportAction(Request $request)
     {
         $brief = new Brief();
-        $formIdArray = $request->getSession()->get('formIdArray');
+        $formIdArray = $request->getSession()->get('formArray');
+
+        $em = $this->getDoctrine()->getManager();
 
         foreach ($formIdArray as $formName => $value)
         {
-            $setProp = "set{$formName}Id";
+            $setProp = "set{$formName}";
             $brief = $brief->$setProp($value);
+            $em->persist($value);
         }
 
-        $briefId = $this->saveToDB($brief);
+        $em->persist($brief);
+        $em->flush();
 
-        return $this->redirectToRoute("get_report", ['id' => $briefId], 301);
+        return $this->redirectToRoute("get_report", ['id' => $brief->getId()], 301);
     }
 
     /**
@@ -151,8 +143,8 @@ class HomeController extends Controller
     {
 
         $brief = $this->getDoctrine()->getRepository(Brief::class)->find($id);
-        $company = $this->getDoctrine()->getRepository(Company::class)->find($brief->getCompanyId());
-        $manager = $this->getDoctrine()->getRepository(Manager::class)->find($brief->getManagerId());
+        $company = $brief->getCompany();
+        $manager = $brief->getManager();
         $uri = $request->getUri();
 
         return $this->render(':default:report.html.twig', array(

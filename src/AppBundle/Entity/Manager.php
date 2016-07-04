@@ -33,11 +33,10 @@ class Manager
     private $phone;
 
     /**
-     * @ORM\Column(type="integer")
      * @ManyToOne(targetEntity="Company")
      * @JoinColumn(name="company_id", referencedColumnName="id")
      */
-    private $companyId;
+    private $company;
 
     /**
      * @return int
@@ -107,18 +106,18 @@ class Manager
     /**
      * @return int
      */
-    public function getCompanyId()
+    public function getCompany()
     {
-        return $this->companyId;
+        return $this->company;
     }
 
     /**
-     * @param integer $companyId
+     * @param integer $company
      * @return Manager
      */
-    public function setCompanyId($companyId)
+    public function setCompany($company)
     {
-        $this->companyId = $companyId;
+        $this->company = $company;
         
         return $this;
     }

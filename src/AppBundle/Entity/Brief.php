@@ -25,85 +25,58 @@ class Brief
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="company_id", type="integer")
      * @ManyToOne(targetEntity="AppBundle\Entity\Company")
      * @JoinColumn(name="company_id", referencedColumnName="id")
      */
-    private $companyId;
+    private $company;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="manager_id", type="integer")
      * @ManyToOne(targetEntity="AppBundle\Entity\Manager")
      * @JoinColumn(name="manager_id", referencedColumnName="id")
      */
-    private $managerId;
+    private $manager;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="marketing_section_id", type="integer", unique=true, nullable=true)
-     * @OneToOne(targetEntity="MarketingSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\MarketingSection")
      * @JoinColumn(name="marketing_section_id", referencedColumnName="id")
      */
-    private $marketingSectionId;
+    private $marketingSection;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="general_info_section_id", type="integer", unique=true, nullable=true)
-     * @OneToOne(targetEntity="GeneralInfoSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\GeneralInfoSection")
      * @JoinColumn(name="general_info_section_id", referencedColumnName="id")
      */
-    private $generalInfoSectionId;
+    private $generalInfoSection;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="design_section_id", type="integer", unique=true, nullable=true)
-     * @OneToOne(targetEntity="DesignSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\DesignSection")
      * @JoinColumn(name="design_section_id", referencedColumnName="id")
      */
-    private $designSectionId;
+    private $designSection;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="tech_design_section_id", type="integer", unique=true, nullable=true)
-     * @OneToOne(targetEntity="TechDesignSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\TechDesignSection")
      * @JoinColumn(name="tech_design_section_id", referencedColumnName="id")
      */
-    private $techDesignSectionId;
+    private $techDesignSection;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="code_section_id", type="integer", unique=true, nullable=true)
-     * @OneToOne(targetEntity="CodeSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\CodeSection")
      * @JoinColumn(name="code_section_id", referencedColumnName="id")
      */
-    private $codeSectionId;
+    private $codeSection;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="makeup_section_id", type="integer", unique=true, nullable=true)
-     * @OneToOne(targetEntity="MakeupSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\MakeupSection")
      * @JoinColumn(name="makeup_section_id", referencedColumnName="id")
      */
-    private $makeupSectionId;
+    private $makeupSection;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="module_section_id", type="integer", unique=true, nullable=true)
-     * @OneToOne(targetEntity="ModuleSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\ModuleSection")
      * @JoinColumn(name="module_section_id", referencedColumnName="id")
      */
-    private $moduleSectionId;
+    private $moduleSection;
 
 
 
@@ -120,13 +93,13 @@ class Brief
     /**
      * Set companyId
      *
-     * @param integer $companyId
+     * @param integer $company
      *
      * @return Brief
      */
-    public function setCompanyId($companyId)
+    public function setCompany($company)
     {
-        $this->companyId = $companyId;
+        $this->company = $company;
 
         return $this;
     }
@@ -136,21 +109,21 @@ class Brief
      *
      * @return int
      */
-    public function getCompanyId()
+    public function getCompany()
     {
-        return $this->companyId;
+        return $this->company;
     }
 
     /**
      * Set managerId
      *
-     * @param integer $managerId
+     * @param integer $manager
      *
      * @return Brief
      */
-    public function setManagerId($managerId)
+    public function setManager($manager)
     {
-        $this->managerId = $managerId;
+        $this->manager = $manager;
 
         return $this;
     }
@@ -160,21 +133,21 @@ class Brief
      *
      * @return int
      */
-    public function getManagerId()
+    public function getManager()
     {
-        return $this->managerId;
+        return $this->manager;
     }
 
     /**
      * Set marketingSectionId
      *
-     * @param integer $marketingSectionId
+     * @param integer $marketingSection
      *
      * @return Brief
      */
-    public function setMarketingSectionId($marketingSectionId)
+    public function setMarketingSection($marketingSection)
     {
-        $this->marketingSectionId = $marketingSectionId;
+        $this->marketingSection = $marketingSection;
 
         return $this;
     }
@@ -184,21 +157,21 @@ class Brief
      *
      * @return int
      */
-    public function getMarketingSectionId()
+    public function getMarketingSection()
     {
-        return $this->marketingSectionId;
+        return $this->marketingSection;
     }
 
     /**
      * Set generalInfoSectionId
      *
-     * @param integer $generalInfoSectionId
+     * @param integer $generalInfoSection
      *
      * @return Brief
      */
-    public function setGeneralInfoSectionId($generalInfoSectionId)
+    public function setGeneralInfoSection($generalInfoSection)
     {
-        $this->generalInfoSectionId = $generalInfoSectionId;
+        $this->generalInfoSection = $generalInfoSection;
 
         return $this;
     }
@@ -208,21 +181,21 @@ class Brief
      *
      * @return int
      */
-    public function getGeneralInfoSectionId()
+    public function getGeneralInfoSection()
     {
-        return $this->generalInfoSectionId;
+        return $this->generalInfoSection;
     }
 
     /**
      * Set designSectionId
      *
-     * @param integer $designSectionId
+     * @param integer $designSection
      *
      * @return Brief
      */
-    public function setDesignSectionId($designSectionId)
+    public function setDesignSection($designSection)
     {
-        $this->designSectionId = $designSectionId;
+        $this->designSection = $designSection;
 
         return $this;
     }
@@ -232,21 +205,21 @@ class Brief
      *
      * @return int
      */
-    public function getDesignSectionId()
+    public function getDesignSection()
     {
-        return $this->designSectionId;
+        return $this->designSection;
     }
 
     /**
      * Set techDesignSectionId
      *
-     * @param integer $techDesignSectionId
+     * @param integer $techDesignSection
      *
      * @return Brief
      */
-    public function setTechDesignSectionId($techDesignSectionId)
+    public function setTechDesignSection($techDesignSection)
     {
-        $this->techDesignSectionId = $techDesignSectionId;
+        $this->techDesignSection = $techDesignSection;
 
         return $this;
     }
@@ -256,21 +229,21 @@ class Brief
      *
      * @return int
      */
-    public function getTechDesignSectionId()
+    public function getTechDesignSection()
     {
-        return $this->techDesignSectionId;
+        return $this->techDesignSection;
     }
 
     /**
      * Set codeSectionId
      *
-     * @param integer $codeSectionId
+     * @param integer $codeSection
      *
      * @return Brief
      */
-    public function setCodeSectionId($codeSectionId)
+    public function setCodeSection($codeSection)
     {
-        $this->codeSectionId = $codeSectionId;
+        $this->codeSection = $codeSection;
 
         return $this;
     }
@@ -280,21 +253,21 @@ class Brief
      *
      * @return int
      */
-    public function getCodeSectionId()
+    public function getCodeSection()
     {
-        return $this->codeSectionId;
+        return $this->codeSection;
     }
 
     /**
      * Set makeupSectionId
      *
-     * @param integer $makeupSectionId
+     * @param integer $makeupSection
      *
      * @return Brief
      */
-    public function setMakeupSectionId($makeupSectionId)
+    public function setMakeupSection($makeupSection)
     {
-        $this->makeupSectionId = $makeupSectionId;
+        $this->makeupSection = $makeupSection;
 
         return $this;
     }
@@ -304,21 +277,21 @@ class Brief
      *
      * @return int
      */
-    public function getMakeupSectionId()
+    public function getMakeupSection()
     {
-        return $this->makeupSectionId;
+        return $this->makeupSection;
     }
 
     /**
      * Set moduleSectionId
      *
-     * @param integer $moduleSectionId
+     * @param integer $moduleSection
      *
      * @return Brief
      */
-    public function setModuleSectionId($moduleSectionId)
+    public function setModuleSection($moduleSection)
     {
-        $this->moduleSectionId = $moduleSectionId;
+        $this->moduleSection = $moduleSection;
 
         return $this;
     }
@@ -328,9 +301,9 @@ class Brief
      *
      * @return int
      */
-    public function getModuleSectionId()
+    public function getModuleSection()
     {
-        return $this->moduleSectionId;
+        return $this->moduleSection;
     }
 }
 

@@ -9,7 +9,7 @@
 namespace AppBundle\Repository;
 
 
-class CompanyRepository extends \Doctrine\ORM\EntityRepository
+class CompanyRepository extends BaseRepository
 {
 
 }
