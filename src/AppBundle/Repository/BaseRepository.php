@@ -3,12 +3,12 @@
 namespace AppBundle\Repository;
 
 
-use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\Request;
 
 class BaseRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function addDataClassToSession($formName, $dataClass, Request $request = null, Form $form = null)
+    public function addDataClassToSession($formName, $dataClass, Request $request, Form $form = null)
     {
         $formArray = $request->getSession()->get('formArray');
         $formArray[$formName] = $dataClass;

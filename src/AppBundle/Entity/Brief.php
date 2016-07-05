@@ -25,55 +25,55 @@ class Brief
     private $id;
 
     /**
-     * @ManyToOne(targetEntity="AppBundle\Entity\Company")
+     * @ManyToOne(targetEntity="AppBundle\Entity\Company", cascade={"persist"})
      * @JoinColumn(name="company_id", referencedColumnName="id")
      */
     private $company;
 
     /**
-     * @ManyToOne(targetEntity="AppBundle\Entity\Manager")
+     * @ManyToOne(targetEntity="AppBundle\Entity\Manager", cascade={"persist"})
      * @JoinColumn(name="manager_id", referencedColumnName="id")
      */
     private $manager;
 
     /**
-     * @OneToOne(targetEntity="AppBundle\Entity\MarketingSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\MarketingSection", cascade={"persist"})
      * @JoinColumn(name="marketing_section_id", referencedColumnName="id")
      */
     private $marketingSection;
 
     /**
-     * @OneToOne(targetEntity="AppBundle\Entity\GeneralInfoSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\GeneralInfoSection", cascade={"persist"})
      * @JoinColumn(name="general_info_section_id", referencedColumnName="id")
      */
     private $generalInfoSection;
 
     /**
-     * @OneToOne(targetEntity="AppBundle\Entity\DesignSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\DesignSection", cascade={"persist"})
      * @JoinColumn(name="design_section_id", referencedColumnName="id")
      */
     private $designSection;
 
     /**
-     * @OneToOne(targetEntity="AppBundle\Entity\TechDesignSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\TechDesignSection", cascade={"persist"})
      * @JoinColumn(name="tech_design_section_id", referencedColumnName="id")
      */
     private $techDesignSection;
 
     /**
-     * @OneToOne(targetEntity="AppBundle\Entity\CodeSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\CodeSection", cascade={"persist"})
      * @JoinColumn(name="code_section_id", referencedColumnName="id")
      */
     private $codeSection;
 
     /**
-     * @OneToOne(targetEntity="AppBundle\Entity\MakeupSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\MakeupSection", cascade={"persist"})
      * @JoinColumn(name="makeup_section_id", referencedColumnName="id")
      */
     private $makeupSection;
 
     /**
-     * @OneToOne(targetEntity="AppBundle\Entity\ModuleSection")
+     * @OneToOne(targetEntity="AppBundle\Entity\ModuleSection", cascade={"persist"})
      * @JoinColumn(name="module_section_id", referencedColumnName="id")
      */
     private $moduleSection;

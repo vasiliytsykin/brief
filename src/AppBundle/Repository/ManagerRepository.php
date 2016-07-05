@@ -15,11 +15,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ManagerRepository extends BaseRepository
 {
-    public function addDataClassToSession($formName, Manager $dataClass, Request $request = null, Form $form = null)
+    public function addDataClassToSession($formName, Manager $dataClass, Request $request, Form $form = null)
     {
-        $formArray = $request->getSession()->get('formArray');
-        $dataClass = $dataClass->setCompany($formArray['Company']);
-        
-        parent::addDataClassToSession($formName, $dataClass, $request);
+        $manager = $this->findOneByManagerName($dataClass->getManagerName());
+        $dataParam = $manager ? $manager:
+            $dataClass->setCompany(
+                $request
+                    ->getSession()
+                    ->get('formArray')
+                    ['Company']
+            );
+
+        parent::addDataClassToSession($formName, $dataParam, $request);
     }
 }

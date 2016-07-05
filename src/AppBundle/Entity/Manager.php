@@ -6,7 +6,8 @@ use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
- *@ORM\Entity
+ * @ORM\Table(name="manager")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ManagerRepository")
  */
 class Manager
 {

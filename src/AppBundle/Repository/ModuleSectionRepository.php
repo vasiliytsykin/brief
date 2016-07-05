@@ -13,12 +13,12 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ModuleSectionRepository extends BaseRepository
 {
-    public function addDataClassToSession($formName, ModuleSection $dataClass, Request $request = null, Form $form = null)
+    public function addDataClassToSession($formName, ModuleSection $dataClass, Request $request, Form $form = null)
     {
         $dataClass = $dataClass->
         setSiteModules($this->
         getModules($request->request->get($form->getName())));
-        
+
         parent::addDataClassToSession($formName, $dataClass, $request);
     }
 

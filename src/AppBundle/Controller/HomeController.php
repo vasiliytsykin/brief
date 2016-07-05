@@ -55,6 +55,7 @@ class HomeController extends Controller
     {
         $className = "AppBundle\\Entity\\{$formName}";
         $formType = "AppBundle\\Form\\{$formName}Type";
+        $repository = $this->getDoctrine()->getRepository($className);
         $dataClass = new $className;
         
         $initialData = $formName != 'ModuleSection'? $dataClass: null;
@@ -65,19 +66,7 @@ class HomeController extends Controller
 
         if($form->isValid())
         {
-            $formArray = $request->getSession()->get('formArray');
-
-            if($formName == 'ModuleSection')
-                $dataClass = $dataClass->
-                setSiteModules($this->
-                getModules($request->request->get($form->getName())));
-
-            if($formName == 'Manager')
-                $dataClass = $dataClass->setCompany($formArray['Company']);
-
-            $formArray[$formName] = $dataClass;
-            $request->getSession()->set('formArray', $formArray);
-
+            $repository->addDataClassToSession($formName, $dataClass, $request, $form);
             return $this->redirect($this->path[$formName]);
         }
         else
@@ -94,17 +83,7 @@ class HomeController extends Controller
             'buttonLabel' => $this->getBunttonLabel($formName)
         ));
     }
-
-    private function getModules($data)
-    {
-        $result = '';
-        foreach ($data as $module => $value)
-            if ($value && $module != '_token')
-                $result = $result . $value . ', ';
-
-        return trim($result, ', ');
-
-    }
+    
 
     private function getBunttonLabel($formName)
     {
@@ -126,10 +105,9 @@ class HomeController extends Controller
         {
             $setProp = "set{$formName}";
             $brief = $brief->$setProp($value);
-            $em->persist($value);
         }
 
-        $em->persist($brief);
+        $brief = $em->merge($brief);
         $em->flush();
 
         return $this->redirectToRoute("get_report", ['id' => $brief->getId()], 301);
