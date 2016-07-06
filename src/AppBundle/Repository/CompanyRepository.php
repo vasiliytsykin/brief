@@ -18,8 +18,8 @@ class CompanyRepository extends BaseRepository
     public function addDataClassToSession($formName, Company $dataClass, Request $request, Form $form = null)
     {
         $company = $this->findOneBy(array('companyName' => $dataClass->getCompanyName()));
-        $dataParam = $company ? $company: $dataClass;
+        $dataClass = $company ? $this->update($company, $dataClass): $dataClass;
 
-        parent::addDataClassToSession($formName, $dataParam, $request);
+        parent::addDataClassToSession($formName, $dataClass, $request);
     }
 }

@@ -97,17 +97,19 @@ class HomeController extends Controller
     public function createReportAction(Request $request)
     {
         $brief = new Brief();
-        $formIdArray = $request->getSession()->get('formArray');
-
+        $formArray = $request->getSession()->get('formArray');
         $em = $this->getDoctrine()->getManager();
 
-        foreach ($formIdArray as $formName => $value)
+        foreach ($formArray as $formName => $id)
         {
+            $entity = $this->getDoctrine()
+                ->getRepository("AppBundle\\Entity\\{$formName}")
+                ->find($id);
             $setProp = "set{$formName}";
-            $brief = $brief->$setProp($value);
+            $brief = $brief->$setProp($entity);
         }
 
-        $brief = $em->merge($brief);
+        $em->persist($brief);
         $em->flush();
 
         return $this->redirectToRoute("get_report", ['id' => $brief->getId()], 301);
