@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class HomeController extends Controller
@@ -123,6 +124,8 @@ class HomeController extends Controller
     {
 
         $brief = $this->getDoctrine()->getRepository(Brief::class)->find($id);
+        if(!$brief) throw new NotFoundHttpException();
+        
         $company = $brief->getCompany();
         $manager = $brief->getManager();
         $uri = $request->getUri();

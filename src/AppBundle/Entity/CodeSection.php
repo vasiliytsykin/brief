@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CodeSection
@@ -25,6 +26,7 @@ class CodeSection
      * @var string
      *
      * @ORM\Column(name="server", type="string", length=255)
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $server;
 
@@ -32,6 +34,7 @@ class CodeSection
      * @var string
      *
      * @ORM\Column(name="programming_lang", type="string", length=255)
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $programmingLang;
 
@@ -39,6 +42,7 @@ class CodeSection
      * @var string
      *
      * @ORM\Column(name="data_base", type="string", length=255)
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $dataBase;
 
@@ -46,6 +50,7 @@ class CodeSection
      * @var string
      *
      * @ORM\Column(name="server_config", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $serverConfig;
 
@@ -53,6 +58,7 @@ class CodeSection
      * @var string
      *
      * @ORM\Column(name="encoding", type="string", length=255)
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $encoding;
 
@@ -60,6 +66,7 @@ class CodeSection
      * @var string
      *
      * @ORM\Column(name="cms", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $cms;
 

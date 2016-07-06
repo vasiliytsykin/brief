@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * GeneralInfoSection
@@ -25,6 +26,7 @@ class GeneralInfoSection
      * @var string
      *
      * @ORM\Column(name="target_name", type="string", length=100)
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $targetName;
 
@@ -32,6 +34,7 @@ class GeneralInfoSection
      * @var string
      *
      * @ORM\Column(name="target_group", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $targetGroup;
 
@@ -39,6 +42,7 @@ class GeneralInfoSection
      * @var string
      *
      * @ORM\Column(name="main_task", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $mainTask;
 
@@ -46,6 +50,7 @@ class GeneralInfoSection
      * @var string
      *
      * @ORM\Column(name="message", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $message;
 
@@ -53,6 +58,7 @@ class GeneralInfoSection
      * @var string
      *
      * @ORM\Column(name="keywords", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $keywords;
 
@@ -60,13 +66,14 @@ class GeneralInfoSection
      * @var string
      *
      * @ORM\Column(name="structure", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $structure;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="guideline", type="text")
+     * @ORM\Column(name="guideline", type="text", nullable=true)
      */
     private $guideline;
 

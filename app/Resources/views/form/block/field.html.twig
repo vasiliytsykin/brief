@@ -1,6 +1,7 @@
 {% block text_row %}
     {% spaceless %}
         <div class="form-group">
+            {{ form_errors(form) }}
             {{ form_widget(form) }}
         </div>
     {% endspaceless %}

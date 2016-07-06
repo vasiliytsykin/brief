@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Company
@@ -25,6 +26,7 @@ class Company
      * @var string
      *
      * @ORM\Column(name="company_name", type="string", length=100, unique=true)
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $companyName;
 
@@ -32,6 +34,7 @@ class Company
      * @var string
      *
      * @ORM\Column(name="domain", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $domain;
 
@@ -39,6 +42,7 @@ class Company
      * @var string
      *
      * @ORM\Column(name="geography", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $geography;
 
@@ -53,6 +57,8 @@ class Company
      * @var string
      *
      * @ORM\Column(name="company_email", type="string", length=100, unique=true)
+     * @Assert\NotBlank(message="обязательное поле!")
+     * @Assert\Email(message="укажите корректный email")
      */
     private $companyEmail;
 

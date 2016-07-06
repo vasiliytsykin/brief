@@ -20,17 +20,23 @@ class MarketingSectionType extends AbstractType
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Ближайшие конкуренты'
-                )))
+                ),
+                'required' => false
+            ))
             ->add('position', TextareaType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Позиция компании на рынке'
-                )))
+                ),
+                'required' => false
+                ))
             ->add('capacity', TextareaType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Ёмкость рынка'
-                )))
+                ),
+                'required' => false
+                ))
         ;
     }
     

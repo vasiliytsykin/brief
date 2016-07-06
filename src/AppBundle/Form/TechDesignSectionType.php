@@ -21,7 +21,9 @@ class TechDesignSectionType extends AbstractType
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Адаптация под мобильные устройства'
-                )))
+                ),
+                'required' => false
+                ))
             ->add('browsers', TextareaType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
@@ -36,7 +38,9 @@ class TechDesignSectionType extends AbstractType
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Наличие медиа-контента в хорошем качестве'
-                )))
+                ),
+                'required' => false
+                ))
             ->add('language', TextareaType::class, array(
                 'attr' => array(
                     'class' => 'form-control',

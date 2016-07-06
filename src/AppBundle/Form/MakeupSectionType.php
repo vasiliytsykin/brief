@@ -20,12 +20,16 @@ class MakeupSectionType extends AbstractType
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Наличие ограничений по верстке сайта'
-                )))
+                ),
+                'required' => false
+                ))
             ->add('jsLibrary', TextareaType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Используемые js-библиотеки и версии (JQuery, Angular JS, Bootstrap)'
-                )))
+                ),
+                'required' => false
+                ))
         ;
     }
     

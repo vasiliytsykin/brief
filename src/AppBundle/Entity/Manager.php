@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="manager")
@@ -20,16 +21,21 @@ class Manager
 
     /**
      * @ORM\Column(name="manager_name", type="string", length=100, unique=true)
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $managerName;
 
     /**
      * @ORM\Column(name="manager_email", type="string", length=100)
+     * @Assert\NotBlank(message="обязательное поле!")
+     * @Assert\Email(message="укажите корректный email")
      */
     private $managerEmail;
 
     /**
-     * @ORM\Column(type="string", length=12)
+     * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="обязательное поле!")
+     * @Assert\Regex("/^(\+7|8)(\s|-)?(\d{3})(\s|-)?((\d{2})|(\d{3}))(\s|-)?(\d{2})(\s|-)?(?(6)\d{3}|\d{2})/", message="укажите корректный телефон")
      */
     private $phone;
 

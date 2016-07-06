@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * DesignSection
@@ -25,6 +26,7 @@ class DesignSection
      * @var string
      *
      * @ORM\Column(name="style", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $style;
 
@@ -32,20 +34,21 @@ class DesignSection
      * @var string
      *
      * @ORM\Column(name="impression", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $impression;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="anti_features", type="text")
+     * @ORM\Column(name="anti_features", type="text", nullable=true)
      */
     private $antiFeatures;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="anti_associations", type="text")
+     * @ORM\Column(name="anti_associations", type="text", nullable=true)
      */
     private $antiAssociations;
     

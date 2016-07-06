@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ModuleSection
@@ -24,7 +25,7 @@ class ModuleSection
     /**
      * @var string
      *
-     * @ORM\Column(name="site_modules", type="text")
+     * @ORM\Column(name="site_modules", type="text", nullable=true)
      */
     private $siteModules;
 

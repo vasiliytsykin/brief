@@ -5,6 +5,7 @@ $(document).ready(function () {
     });
 
     $.validator.messages.required = "обязательное поле!";
+    $.validator.messages.email = "укажите корректный email"
 
     $("form").validate(
         {

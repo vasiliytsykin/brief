@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MarketingSection
@@ -25,21 +26,21 @@ class MarketingSection
     /**
      * @var string
      *
-     * @ORM\Column(name="competitors", type="text")
+     * @ORM\Column(name="competitors", type="text", nullable=true)
      */
     private $competitors;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="position", type="text")
+     * @ORM\Column(name="position", type="text", nullable=true)
      */
     private $position;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="capacity", type="text")
+     * @ORM\Column(name="capacity", type="text", nullable=true)
      */
     private $capacity;
 

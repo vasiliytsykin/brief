@@ -52,7 +52,9 @@ class GeneralInfoSectionType extends AbstractType
                     'class' => 'form-control',
                     'rows' => '3',
                     'placeholder' => 'Наличие гайдлайна, элементов фирменного стиля (логотип, стилеобразующие элементы), дизайн-макетов'
-                )))
+                ),
+                'required' => false
+                ))
         ;
     }
     

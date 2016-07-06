@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * TechDesignSection
@@ -24,7 +25,7 @@ class TechDesignSection
     /**
      * @var string
      *
-     * @ORM\Column(name="mobile", type="text")
+     * @ORM\Column(name="mobile", type="text", nullable=true)
      */
     private $mobile;
 
@@ -32,6 +33,7 @@ class TechDesignSection
      * @var string
      *
      * @ORM\Column(name="browsers", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $browsers;
 
@@ -39,13 +41,14 @@ class TechDesignSection
      * @var string
      *
      * @ORM\Column(name="resolution", type="string", length=100)
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $resolution;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="media", type="text")
+     * @ORM\Column(name="media", type="text", nullable=true)
      */
     private $media;
 
@@ -53,6 +56,7 @@ class TechDesignSection
      * @var string
      *
      * @ORM\Column(name="language", type="text")
+     * @Assert\NotBlank(message="обязательное поле!")
      */
     private $language;
 

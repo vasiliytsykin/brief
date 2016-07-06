@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MakeupSection
@@ -24,14 +25,14 @@ class MakeupSection
     /**
      * @var string
      *
-     * @ORM\Column(name="restriction", type="text")
+     * @ORM\Column(name="restriction", type="text", nullable=true)
      */
     private $restriction;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="js_library", type="text")
+     * @ORM\Column(name="js_library", type="text", nullable=true)
      */
     private $jsLibrary;
     

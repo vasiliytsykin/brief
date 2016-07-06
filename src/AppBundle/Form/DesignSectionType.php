@@ -30,12 +30,16 @@ class DesignSectionType extends AbstractType
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Что бы вы категорически не хотели видеть в дизайне вашего сайта'
-                )))
+                ),
+                'required' => false
+                ))
             ->add('antiAssociations', TextareaType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
                     'placeholder' => 'Какие ассоциации не должен вызывать сайт'
-                )))
+                ),
+                'required' => false
+                ))
         ;
     }
     
