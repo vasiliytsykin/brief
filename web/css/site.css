@@ -41,12 +41,6 @@
     }
 }
 
-.container {
-    animation-name: fadeIn;
-    animation-duration: 2s;
-    transition-timing-function: ease-in;
-}
-
 .container{
     //width: 768px;
     padding: inherit;

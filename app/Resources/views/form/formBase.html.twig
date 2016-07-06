@@ -2,6 +2,7 @@
 {% form_theme form ':form/block:field.html.twig' ':form/block:checkbox.html.twig' %}
 {% block content %}
 
+    <div {% if form.vars['name'] != 'company' %} class="animated fadeInRight" {% endif %} >
     <div class="col-md-5">
         {{ form_start(form)}}
 
@@ -17,6 +18,7 @@
 
 
         {{ form_end(form) }}
+    </div>
     </div>
 
 {% endblock %}
