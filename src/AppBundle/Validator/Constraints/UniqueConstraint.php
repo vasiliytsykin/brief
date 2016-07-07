@@ -9,9 +9,12 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @Annotation
  */
-class ManagerPhone extends Constraint
+class UniqueConstraint extends Constraint
 {
-    public $message = "Менеджер с таким номером телефона уже существует";
+    public $message;
+    public $entityName;
+    public $field;
+    public $repository;
 
     public function validatedBy()
     {

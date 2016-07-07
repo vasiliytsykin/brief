@@ -9,28 +9,8 @@
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
 services:
-    company_repository:
-        class: Doctrine\ORM\EntityRepository
-        factory: ["@doctrine.orm.entity_manager", getRepository]
-        arguments:
-            - AppBundle\Entity\Company
-    manager_repository:
-            class: Doctrine\ORM\EntityRepository
-            factory: ["@doctrine.orm.entity_manager", getRepository]
-            arguments:
-                - AppBundle\Entity\Manager
-    validator.unique.company_validator:
-        class: AppBundle\Validator\Constraints\UniqueCompanyValidator
-        tags:
-            - { name: validator.constraint_validator, alias: company_validator }
-        arguments: ['@company_repository', 'companyName', 'companyEmail']
-    validator.unique.manager_email_validator:
-            class: AppBundle\Validator\Constraints\ManagerEmailValidator
-            tags:
-                - { name: validator.constraint_validator, alias: manager_email_validator }
-            arguments: ['@manager_repository', 'managerName', 'managerEmail']
-    validator.unique.manager_phone_validator:
-                class: AppBundle\Validator\Constraints\ManagerPhoneValidator
-                tags:
-                    - { name: validator.constraint_validator, alias: manager_phone_validator }
-                arguments: ['@manager_repository', 'managerName', 'phone']
+    validator.unique.unique_constraint_validator:
+                    class: AppBundle\Validator\Constraints\UniqueConstraintValidator
+                    tags:
+                        - { name: validator.constraint_validator, alias: unique_constraint_validator }
+                    arguments: ['@doctrine.orm.entity_manager']

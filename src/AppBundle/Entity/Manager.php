@@ -10,8 +10,10 @@ use AppBundle\Validator\Constraints as MyAssert;
 /**
  * @ORM\Table(name="manager")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ManagerRepository")
- * @MyAssert\ManagerPhone()
- * @MyAssert\ManagerEmail()
+ * @MyAssert\UniqueConstraint(message="менеджер с таким адресом уже существует",
+ *     entityName="managerName", field="managerEmail", repository="AppBundle\Entity\Manager")
+ * @MyAssert\UniqueConstraint(message="менеджер с таким номером телефона уже существует",
+ *     entityName="managerName", field="phone", repository="AppBundle\Entity\Manager")
  */
 class Manager
 {

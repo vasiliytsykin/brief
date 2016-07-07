@@ -11,7 +11,8 @@ use AppBundle\Validator\Constraints as MyAssert;
  *
  * @ORM\Table(name="company")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CompanyRepository")
- * @MyAssert\UniqueCompany()
+ * @MyAssert\UniqueConstraint(message="компания с таким адресом уже существует",
+ *     entityName="companyName", field="companyEmail", repository="AppBundle\Entity\Company")
  */
 class Company
 {
