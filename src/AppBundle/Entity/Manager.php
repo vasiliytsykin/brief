@@ -5,13 +5,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use AppBundle\Validator\Constraints as MyAssert;
 
 /**
  * @ORM\Table(name="manager")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ManagerRepository")
- * @UniqueEntity("managerEmail", message="менеджер с таким адресом уже существует")
- * @UniqueEntity("phone", message="менеджер с таким номером телефона уже существует")
+ * @MyAssert\ManagerPhone()
+ * @MyAssert\ManagerEmail()
  */
 class Manager
 {

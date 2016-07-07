@@ -23,13 +23,14 @@ class BaseEntityValidator extends ConstraintValidator
     public function validate($entity, Constraint $constraint)
     {
 
-        
+        $nameGetter = 'get'.ucfirst($this->name);
+        $fieldGetter = 'get'.ucfirst($this->field);
         $resultByName = $this->repository->findOneBy(array(
-            $this->name => $entity->getCompanyName(),
+            $this->name => $entity->$nameGetter(),
         ));
 
         $resultByField = $this->repository->findOneBy(array(
-            $this->field => $entity->getCompanyEmail()
+            $this->field => $entity->$fieldGetter()
         ));
 
         if($this->bothExistButDifferent($resultByName, $resultByField) ||
