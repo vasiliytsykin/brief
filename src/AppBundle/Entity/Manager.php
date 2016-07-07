@@ -5,10 +5,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Table(name="manager")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ManagerRepository")
+ * @UniqueEntity("managerEmail", message="менеджер с таким адресом уже существует")
+ * @UniqueEntity("phone", message="менеджер с таким номером телефона уже существует")
  */
 class Manager
 {
@@ -26,14 +29,14 @@ class Manager
     private $managerName;
 
     /**
-     * @ORM\Column(name="manager_email", type="string", length=100)
+     * @ORM\Column(name="manager_email", type="string", length=100, unique=true)
      * @Assert\NotBlank(message="обязательное поле!")
      * @Assert\Email(message="укажите корректный email")
      */
     private $managerEmail;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, unique=true)
      * @Assert\NotBlank(message="обязательное поле!")
      * @Assert\Regex("/^(\+7|8)(\s|-)?(\d{3})(\s|-)?((\d{2})|(\d{3}))(\s|-)?(\d{2})(\s|-)?(?(6)\d{3}|\d{2})/", message="укажите корректный телефон")
      */

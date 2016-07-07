@@ -3,7 +3,19 @@
 parameters:
 #    parameter_name: value
 
-services:
-#    service_name:
+#services:
+#    company_repository:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+services:
+    company_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - AppBundle\Entity\Company
+    validator.unique.company_validator:
+        class: AppBundle\Validator\Constraints\UniqueCompanyValidator
+        tags:
+            - { name: validator.constraint_validator, alias: company_validator }
+        arguments: ['@company_repository']
