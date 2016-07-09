@@ -1,0 +1,32 @@
+body {
+
+    font-family: 'Museo Sans';
+}
+
+.header{
+    height: 190px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.container{
+    padding: inherit;
+}
+
+.table-header{
+    text-align: center;
+}
+
+.report-h1{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 57px;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.td-name{
+    width: 30%;
+}

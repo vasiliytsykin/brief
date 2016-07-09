@@ -6,8 +6,12 @@ use AppBundle\Entity\Brief;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
@@ -113,6 +117,8 @@ class HomeController extends Controller
         $em->persist($brief);
         $em->flush();
 
+        $this->createPdf($brief);
+
         return $this->redirectToRoute("get_report", ['id' => $brief->getId()], 301);
     }
 
@@ -125,15 +131,71 @@ class HomeController extends Controller
 
         $brief = $this->getDoctrine()->getRepository(Brief::class)->find($id);
         if(!$brief) throw new NotFoundHttpException();
-        
+
         $company = $brief->getCompany();
         $manager = $brief->getManager();
         $uri = $request->getUri();
+        $pdf_uri = "/home/get_pdf_report/{$id}";
 
         return $this->render(':default:report.html.twig', array(
             'company' => $company,
             'manager' => $manager,
-            'uri' => $uri
+            'uri' => $uri,
+            'pdf_uri' => $pdf_uri
         ));
     }
+
+    /**
+     * @Route("/home/get_pdf_report/{id}", name="get_pdf_report")
+     * @Method("GET")
+     */
+    public function getPdfReportAction($id)
+    {
+
+        $filePath = $this->getPdfFilePath($id);
+        $parts = explode('/', $filePath);
+        $fileName = $parts[count($parts) - 1];
+
+        $fs = new Filesystem();
+        if (!$fs->exists($filePath)) {
+            throw $this->createNotFoundException();
+        }
+        
+        $response = new BinaryFileResponse($filePath);
+        $response->trustXSendfileTypeHeader();
+        $response->setContentDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $fileName,
+            iconv('UTF-8', 'ASCII//TRANSLIT', $fileName)
+        );
+
+        return $response;
+    }
+
+    private function createPdf(Brief $brief)
+    {
+
+        $html = $this->renderView('report_pdf.html.twig', array(
+            'company' => $brief->getCompany(),
+            'manager' => $brief->getManager(),
+            'marketing' => $brief->getMarketingSection(),
+            'generalInfo' => $brief->getGeneralInfoSection(),
+            'design' => $brief->getDesignSection(),
+            'techDesign' => $brief->getTechDesignSection(),
+            'makeup' => $brief->getMakeupSection(),
+            'code' => $brief->getCodeSection(),
+            'modules' => $brief->getModuleSection()
+        ));
+
+        $pathToFile = $this->getPdfFilePath($brief->getId());
+        
+        $this->get('knp_snappy.pdf')->generateFromHtml($html, $pathToFile);
+    }
+
+    private function getPdfFilePath($id)
+    {
+        $basePath = $this->container->getParameter('kernel.root_dir').'/Resources/Pdfs/';
+        return $basePath . "report_pdf_{$id}.pdf";
+    }
+
 }

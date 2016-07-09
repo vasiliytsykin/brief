@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}BriefReport{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/museosans/museosans.css')) }}"/>
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/bootstrap.min.css')) }}"/>
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/report_pdf.css')) }}"/>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <div class="container">
+
+        <header class="header" id="header">
+            <img src="{{ absolute_url(asset('images/logo-black.png')) }}" alt="logo" width="111" height="99">
+        </header>
+
+        <h1 class="report-h1">Бриф на разработку сайта</h1>
+
+        <!-- Company -->
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr><td class="td-name">Компания</td><td>{{ company.companyName }}</td></tr>
+                <tr><td class="td-name">Сфера деятельности</td><td>{{ company.domain }}</td></tr>
+                <tr><td class="td-name">География деятельности</td><td>{{ company.geography }}</td></tr>
+                <tr><td class="td-name">Основные характеристики товаров и услуг</td><td>{{ company.products }}</td></tr>
+                <tr><td class="td-name">Email</td><td>{{ company.companyEmail }}</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Manager -->
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr><td class="td-name">Менеджер проекта от заказчика</td><td>{{ manager.managerName }}</td></tr>
+            <tr><td class="td-name">Телефон</td><td>{{ manager.phone }}</td></tr>
+            <tr><td class="td-name">Email</td><td>{{ manager.managerEmail }}</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Marketing -->
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr><td class="td-name">Ближайшие конкуренты</td><td>{{ marketing.competitors }}</td></tr>
+            <tr><td class="td-name">Позиция компании на рынке</td><td>{{ marketing.position }}</td></tr>
+            <tr><td class="td-name">Ёмкость рынка</td><td>{{ marketing.capacity }}</td></tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr><td class="td-name">Название (предприятия, товара или услуги, для которого разрабатывается сайт</td>
+                <td>{{ generalInfo.targetName }}</td></tr>
+            <tr><td class="td-name">Целевая аудитория</td><td>{{ generalInfo.targetName }}</td></tr>
+            <tr><td class="td-name">Задача, которую должен решать сайт</td>
+                <td>{{ generalInfo.mainTask }}</td></tr>
+            <tr><td class="td-name">Какое основное сообщение необходимо довести до сознания потребителя</td>
+                <td>{{ generalInfo.message }}</td></tr>
+            <tr><td class="td-name">Семантическое ядро (основные поисковые запросы по которым должен находиться сайт)</td>
+                <td>{{ generalInfo.keywords }}</td></tr>
+            <tr><td class="td-name">Предполагаемая структура <br>
+                    Укажите предполагаемые разделы вашего сайта и прокомментируйте их содержание (с указанием возможных подразделов)</td>
+                <td>{{ generalInfo.structure }}</td></tr>
+            <tr><td class="td-name">Наличие гайдлайна, элементов фирменного стиля (логотип, стилеобразующие элементы), дизайн-макетов</td>
+                <td>{{ generalInfo.guideline }}</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Design -->
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr><td class="td-name">Какие стилевые решения вы считаете наиболее подходящими для вашего сайта,
+                    и укажите референсы</td><td>{{ design.style }}</td></tr>
+            <tr><td class="td-name">Какое впечатление должен производить сайт на посетителя</td>
+                <td>{{ design.impression }}</td></tr>
+            <tr><td class="td-name">Что бы вы категорически не хотели видеть в дизайне вашего сайта</td>
+                <td>{{ design.antiFeatures }}</td></tr>
+            <tr><td class="td-name">Какие ассоциации не должен вызывать сайт</td>
+                <td>{{ design.antiAssociations }}</td></tr>
+            </tbody>
+        </table>
+
+        <!-- TechDesign -->
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr><td class="td-name">Адаптация под мобильные устройства</td>
+                <td>{{ techDesign.mobile }}</td></tr>
+            <tr><td class="td-name">Версии браузеров, которые необходимо поддерживать</td>
+                <td>{{ techDesign.browsers }}</td></tr>
+            <tr><td class="td-name">Основное разрешение экрана</td><td>{{ techDesign.resolution }}</td></tr>
+            <tr><td class="td-name">Наличие медиа-контента в хорошем качестве</td>
+                <td>{{ techDesign.media }}</td></tr>
+            <tr><td class="td-name">Языковые версии сайта</td>
+                <td>{{ techDesign.language }}</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Makeup -->
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr><td class="td-name">Наличие ограничений по верстке сайта, если есть
+                    (особенности разметки, микроразметка,
+                    использование ссылок на протоколы приложений whatsapp, viber, skype,
+                    ссылки на магазины приложений (AppStore, Google Play, Windows Store)</td>
+                <td>{{ makeup.restriction }}</td></tr>
+            <tr><td class="td-name">Используемые js-библиотеки и версии (JQuery, Angular JS, Bootstrap)</td>
+                <td>{{ makeup.jsLibrary }}</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Code -->
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr><td class="td-name">HTTP-сервер и его версия (Apache, IIS)</td>
+                <td>{{ code.server }}</td></tr>
+            <tr><td class="td-name">Серверный язык и его версия (PHP, C#, Python)</td>
+                <td>{{ code.programmingLang }}</td></tr>
+            <tr><td class="td-name">База данных (MySQL, SQLite, Oracle, MS Server)</td>
+                <td>{{ code.dataBase }}</td></tr>
+            <tr><td class="td-name">Технические ограничения сервера
+                    (библиотеки, конфигурация, нагрузочные характеристики)</td>
+                <td>{{ code.serverConfig }}</td></tr>
+            <tr><td class="td-name">Кодировка сервера (windows-1251, utf-8)</td>
+                <td>{{ code.encoding }}</td></tr>
+            <tr><td class="td-name">CMS (система управления сайтом)
+                    / фреймворк и версия (WordPress, Bitrix, Kohana, Symfony, TWIG, Joomla)</td>
+                <td>{{ code.cms }}</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Modules -->
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr><td class="td-name">Программные модули</td><td>{{ modules.siteModules }}</td></tr>
+            </tbody>
+        </table>
+
+    </div> <!-- container -->
+{% endblock %}
+</body>
+</html>

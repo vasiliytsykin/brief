@@ -17,3 +17,15 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    #mac os x (default)
+    #comment next line if you are not on mac
+    wkhtmltopdf_path: "%kernel.root_dir%/../vendor/bin/wkhtmltopdf-amd64-osx"
+
+    #uncomment one of these depending on your system:
+
+    #linux
+    #wkhtmltopdf_path: "%kernel.root_dir%/../vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64"
+
+    #windows
+    #wkhtmltopdf_path: "%kernel.root_dir%/../vendor/bin/wkhtmltopdf.exe"

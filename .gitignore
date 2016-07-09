@@ -1,4 +1,5 @@
 /app/config/parameters.yml
+/app/Resources/Pdfs/
 /build/
 /phpunit.xml
 /var/*

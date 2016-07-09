@@ -99,7 +99,7 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 255px;
+    margin-bottom: 55px;
     text-align: center;
 }
 
@@ -162,4 +162,14 @@ ul{
     -webkit-padding-start: 0px;
     -moz-padding-start: 0px;
     list-style-type: none;
+}
+
+a:visited, a:link{
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover, a:active{
+    text-decoration: none;
+    color: #f2dede;
 }
